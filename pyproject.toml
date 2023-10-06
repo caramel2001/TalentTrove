@@ -6,12 +6,13 @@ authors = ["Pratham <agarwalpratham2001@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = ">=3.9,<3.13"
+python = ">=3.9,<3.9.7 || >3.9.7,<3.13"
 scrapy = "^2.10.1"
 notebook = "^7.0.3"
 jupyter = "^1.0.0"
 ipykernel = "6.21.2"
 pandas = "^2.1.1"
+streamlit = "^1.27.2"
 
 [build-system]
 requires = ["poetry-core"]
