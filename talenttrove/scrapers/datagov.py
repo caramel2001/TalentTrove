@@ -7,7 +7,7 @@ class DataGovCollection():
 
     def __init__(self, collection_id,verbose=True, *args, **kwargs):
         self.url = f"https://api-production.data.gov.sg/v2/public/api/collections/{collection_id}/metadata"
-        self.verbose=True
+        self.verbose=verbose
     
     def collect(self):
         response  = requests.get(self.url)

@@ -1,0 +1,27 @@
+import requests
+import http.cookies
+import json
+from talenttrove.scrapers.utils import HEADERS
+
+# QUERY STRINGS
+ALL_ENGINEERING_INTERNSHIPS = "FTSQuery=%28%27intern%27+%7C+%27internship%27+%7C+%27internships%27%29+%26+%28%27engineer%27+%7C+%27engineering%27+%7C+%27software%27+%7C+%27software+development%27+%7C+%27software+engineering%27+%7C+%27software+engineer%27+%7C+%27software+developer%27+%7C+%27analytics+engineer%27+%7C+%27full+stack%27+%7C+%27full-stack%27+%7C+%27frontend%27+%7C+%27front+end%27+%7C+%27front-end%27+%7C+%27backend%27+%7C+%27back+end%27+%7C+%27back-end%27+%7C+%27web%27+%7C+%27cybersecurity%27+%7C+%27python%27+%7C+%27c%2B%2B%27+%7C+%27javascript%27+%7C+%27node.js%27+%7C+%27embedded%27+%7C+%27ios%27+%7C+%27android%27+%7C+%27java%27+%7C+%27ml%27+%7C+%27machine+learning%27+%7C+%27computer+science%27+%7C+%27ai%27+%7C+%27test+engineer%27+%7C+%27network+engineer%27+%7C+%27network+engineering%27+%7C+%27automation+engineer%27+%7C+%27systems+engineer%27+%7C+%27data+engineering%27+%7C+%27data+science%27+%7C+%27data+scientist%27+%7C+%27data+analyst%27+%7C+%27data+analytics%27+%7C+%27algorithm%27+%7C+%27algo%27+%7C+%27technology+analyst%27+%7C+%27digital+solutions%27+%7C+%27data+engineer%27+%7C+%27database+engineer%27+%7C+%27data+infrastructure%27+%7C+%27data+architecture%27+%7C+%27database+architecture%27+%7C+%27data+platform%27+%7C+%27data+solutions%27+%7C+%27database+solutions%27+%7C+%27site+reliability%27+%7C+%27sensor+testing%27+%7C+%27digital+analytics%27+%7C+%27programmer%27+%7C+%27data+visualization%27+%7C+%27computer+vision%27+%7C+%27cloud+architecture%27+%7C+%27data+management%27+%7C+%27sde%27+%7C+%27swe%27+%7C+%27web3%27%29+%26+%28%21%272023%27+%26+%21%27fall%27+%26+%21%27winter%27+%26+%21%27m%2Ff%2Fd%27+%26+%21%27senior%27%29&filterName=All+Engineering%2C+Internships+%28USA%29"
+ALL_ENGINEERING_GRAD = "FTSQuery=%28%27new+graduate%27+%7C+%27new+grad%27+%7C+%27entry%27+%7C+%27junior%27+%7C+%27campus%27+%7C+%27early+career%27+%7C+%27university%27+%7C+%27college+grad%27+%7C+%27entry-level%27%29+%26+%28%27engineer%27+%7C+%27engineering%27+%7C+%27software%27+%7C+%27software+development%27+%7C+%27software+engineering%27+%7C+%27software+engineer%27+%7C+%27software+developer%27+%7C+%27analytics+engineer%27+%7C+%27full+stack%27+%7C+%27full-stack%27+%7C+%27frontend%27+%7C+%27front+end%27+%7C+%27front-end%27+%7C+%27backend%27+%7C+%27back+end%27+%7C+%27back-end%27+%7C+%27web%27+%7C+%27cybersecurity%27+%7C+%27python%27+%7C+%27c%2B%2B%27+%7C+%27javascript%27+%7C+%27node.js%27+%7C+%27embedded%27+%7C+%27ios%27+%7C+%27android%27+%7C+%27java%27+%7C+%27ml%27+%7C+%27machine+learning%27+%7C+%27computer+science%27+%7C+%27ai%27+%7C+%27test+engineer%27+%7C+%27network+engineer%27+%7C+%27network+engineering%27+%7C+%27automation+engineer%27+%7C+%27systems+engineer%27+%7C+%27data+engineering%27+%7C+%27data+science%27+%7C+%27data+scientist%27+%7C+%27data+analyst%27+%7C+%27data+analytics%27+%7C+%27algorithm%27+%7C+%27algo%27+%7C+%27technology+analyst%27+%7C+%27digital+solutions%27+%7C+%27data+engineer%27+%7C+%27database+engineer%27+%7C+%27data+infrastructure%27+%7C+%27data+architecture%27+%7C+%27database+architecture%27+%7C+%27data+platform%27+%7C+%27data+solutions%27+%7C+%27database+solutions%27+%7C+%27site+reliability%27+%7C+%27sensor+testing%27+%7C+%27digital+analytics%27+%7C+%27programmer%27+%7C+%27data+visualization%27+%7C+%27computer+vision%27+%7C+%27cloud+architecture%27+%7C+%27data+management%27+%7C+%27sde%27+%7C+%27swe%27+%7C+%27web3%27%29+%26+%28%21%272023%27+%26+%21%27fall%27+%26+%21%27winter%27+%26+%21%27m%2Ff%2Fd%27+%26+%21%27senior%27+%26+%21%27intern%27+%26+%21%27internship%27+%26+%21%27internships%27+%26+%21%27data+entry%27%29&filterName=All+Engineering%2C+New+Grad+%28USA%29"
+ALL_QUANT_TRADING_INTERNSHIPS = "FTSQuery=%28%27intern%27+%7C+%27internship%27+%7C+%27internships%27%29+%26+%28%27trading%27+%7C+%27quantitative%27+%7C+%27market%27+%7C+%27quant%27+%7C+%27trader%27%29+%26+%28%21%272023%27+%26+%21%27fall%27+%26+%21%27winter%27+%26+%21%27m%2Ff%2Fd%27+%26+%21%27senior%27%29&filterName=Quant+%26+Trading%2C+Internships+%28USA%29"
+ALL_QUANT_TRADING_GRAD = "FTSQuery=%28%27new+graduate%27+%7C+%27new+grad%27+%7C+%27entry%27+%7C+%27junior%27+%7C+%27campus%27+%7C+%27early+career%27+%7C+%27university%27+%7C+%27college+grad%27+%7C+%27entry-level%27%29+%26+%28%27trading%27+%7C+%27quantitative%27+%7C+%27market%27+%7C+%27quant%27+%7C+%27trader%27%29+%26+%28%21%272023%27+%26+%21%27fall%27+%26+%21%27winter%27+%26+%21%27m%2Ff%2Fd%27+%26+%21%27senior%27+%26+%21%27intern%27+%26+%21%27internship%27+%26+%21%27internships%27+%26+%21%27data+entry%27%29&filterName=Quant+%26+Trading%2C+New+Grad+%28USA%29"
+
+class Carbos:
+
+    def __init__(self, cookie_str,verbose=True, *args, **kwargs):
+        self.url = f"https://www.carbosjobs.com/api/job-postings/search"
+        cookie = http.cookies.SimpleCookie()
+        cookie.load(cookie_str)
+        self.cookie_dict = {k: v.value for k, v in cookie.items()}
+        self.verbose=verbose
+    
+    def collect(self,query_string):
+        response  = requests.get(self.url+"?"+query_string,cookies=self.cookie_dict,headers=HEADERS)
+        data = json.loads(response.json())
+        if self.verbose:
+            print(f"Extracted {len(data)} jobs")
+        
+        return data
