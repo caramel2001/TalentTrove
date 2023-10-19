@@ -24,7 +24,8 @@ https://python-poetry.org/docs/cli/
 - SG Careers future (done)
 - Simplify
 - https://www.levels.fyi/jobs
-- Carbos
+- Carbos(done)
+- https://jobpulse.fyi/#
 
 ## Companies and Career Page
 

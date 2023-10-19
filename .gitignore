@@ -1,3 +1,7 @@
 .venv
 __pycache__/
 output
+.DS_store
+App copy.py
+secrets.yaml
+singapore_companies.csv
