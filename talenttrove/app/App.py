@@ -1,5 +1,4 @@
 import streamlit as st
-import os
 from components.sidebar import sidebar
 
 
@@ -27,8 +26,8 @@ if not openai_api_key:
     )
 if not gmail_api_key:
     st.warning(
-        "Enter your Gmail API key in the sidebar. You can get a key at"
-        " https://platform.openai.com/account/api-keys."
+        "Enter your Gmail App Password in the sidebar. You can generate it at"
+        " https://support.google.com/mail/answer/185833."
     )
 
 

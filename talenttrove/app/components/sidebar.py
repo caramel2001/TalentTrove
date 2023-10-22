@@ -23,10 +23,10 @@ def sidebar():
         )
 
         email_key_input = st.text_input(
-            "Gmail API Key",
+            "Gmail App Password",
             type="password",
-            placeholder="Paste your Gmail API key here (sk-...)",
-            help="You can get your API key from https://platform.openai.com/account/api-keys.",  # noqa: E501
+            placeholder="Paste your Gmail App Password here (sk-...)",
+            help="You can get your API key from https://support.google.com/mail/answer/185833.",  # noqa: E501
             value=None
             or st.session_state.get("GMAIL_API_KEY", ""),
         )
