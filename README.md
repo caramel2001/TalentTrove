@@ -13,6 +13,10 @@ Additional Functionalities refer to the documentation
 
 https://python-poetry.org/docs/cli/
 
+To Lauch the Streamlit App
+
+`poetry run streamlit run talenttrove/app/App.py`
+
 ## Company
 
 - Using Kaggle Dataset shortlisted Companies in Technology industry and employee size of more than 200. (<a href='https://github.com/caramel2001/TalentTrove/blob/main/talenttrove/data/companies/tech_companies.csv'>available here</a>)
