@@ -2,7 +2,7 @@ import imaplib
 import email
 from datetime import datetime, timedelta
 from email.header import decode_header
-
+from tqdm import tqdm
 class Gmail:
     def __init__(self, username, password):
         self.username = username
@@ -37,7 +37,7 @@ class Gmail:
                 content_type = part.get_content_type()
                 content_disposition = str(part.get("Content-Disposition"))
                 if "attachment" not in content_disposition:
-                    print('x')
+                    # print('x')
                     body = part.get_payload(decode=True)
                     if body is None:
                         continue
@@ -48,7 +48,7 @@ class Gmail:
 
     def parse_emails(self,ids:list):
         data=[]
-        for email_id in ids:
+        for email_id in tqdm(ids):
             _, email_data = self.mail.fetch(email_id, '(RFC822)')
             raw_email = email_data[0][1]
 
