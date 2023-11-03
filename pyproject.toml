@@ -24,6 +24,7 @@ greenlet = "2.0.1"
 pyjwt = "2.6.0"
 iniconfig = "1.1.1"
 itsdangerous = "2.1.2"
+streamlit-antd-components = "^0.2.3"
 
 
 [build-system]

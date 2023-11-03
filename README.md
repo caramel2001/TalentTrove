@@ -86,3 +86,11 @@ Run exmaple.ipynb to test out different clients and scrapers
 | Yitu Tech            | https://www.yitutech.com/en/career?mode=campus                                                                          |
 | Zendesk              | https://www.zendesk.com/jobs/singapore/                                                                                 |
 | SquarePoint          | https://www.squarepoint-capital.com/careers#s5                                                                          |
+
+## Page layout
+
+### Tracker Page
+
+<p align="center">
+  <img src="assets/tracker_page.png" alt="Your image description">
+</p>

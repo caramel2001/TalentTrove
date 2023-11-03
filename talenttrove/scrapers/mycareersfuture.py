@@ -31,4 +31,8 @@ class MyCareersFuture:
             print(f"Extracted {len(jobs)} jobs")
         return jobs
 
+    def get_job_data(self,id):
+        response = requests.get(f'https://api.mycareersfuture.gov.sg/v2/jobs/{id}?updateApplicationCount=true',headers=HEADERS)
+        return response.json()
+
 
