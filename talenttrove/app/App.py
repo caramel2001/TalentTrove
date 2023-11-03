@@ -30,32 +30,6 @@ if not gmail_api_key:
         " https://support.google.com/mail/answer/185833."
     )
 
-st.markdown("<br>", unsafe_allow_html=True )
-css_body_container = '''
-    <style>
-        [data-testid="stSidebar"] + section [data-testid="stVerticalBlock"]
-        [data-testid="stVerticalBlock"] {
-            gap: 0;
-        }
-    </style>
-    '''
-st.markdown(css_body_container,unsafe_allow_html=True)
-col1,col2 = st.columns([1,2])
-with col2:
-    timeline(1)
-with col1:
-    # Title
-   
-    # Logo, Company Name, and Location in a single column
-    col1, col2 = st.columns([1, 2.5])
-
-    with col1:
-        st.image("https://storage.googleapis.com/simplify-imgs/companies/d3613d51-4f2f-43c1-8952-1f91bf5a8bf8/logo.png", use_column_width=True)  # Replace "vatic_logo.png" with the path to your logo image
-
-    with col2:
-        st.markdown("**Algorithmic Trader**")
-        st.write("Vatic Investments")
-        st.caption("📍 New York, NY, USA")
 # st.markdown("---",unsafe_allow_html=True)
 # uploaded_file = st.file_uploader(
 #     "Upload a pdf, docx, or txt file",

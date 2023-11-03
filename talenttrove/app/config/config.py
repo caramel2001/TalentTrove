@@ -6,7 +6,6 @@ from pathlib import Path
 ROOT_DIR = Path(__file__).parent.parent
 # print(ROOT_DIR)
 # load_dotenv(ROOT_DIR.joinpath(".env"))
-
 settings = {
-
+    "DB_PATH": str(ROOT_DIR.joinpath("db/talenttrove.db")),
 }
