@@ -3291,6 +3291,20 @@ watchdog = {version = ">=2.1.5", markers = "platform_system != \"Darwin\""}
 snowflake = ["snowflake-connector-python (>=2.8.0)", "snowflake-snowpark-python (>=0.9.0)"]
 
 [[package]]
+name = "streamlit-antd-components"
+version = "0.2.3"
+description = "streamlit customer components of Antd Design and Mantine"
+category = "main"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "streamlit_antd_components-0.2.3-py3-none-any.whl", hash = "sha256:935fd88ff079d0a83be844de21505f7bf7f9aae1f87c56ae4c7cd5d98190b2c7"},
+]
+
+[package.dependencies]
+streamlit = ">=1.12.0"
+
+[[package]]
 name = "streamlit-authenticator"
 version = "0.2.3"
 description = "A secure authentication module to validate user credentials in a Streamlit application."
@@ -3826,4 +3840,4 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.9,<3.9.7 || >3.9.7,<3.13"
-content-hash = "d83e6a3bcc02241556a4beda91cb0a8ef0b6aabe9543d462e47e41f86086f557"
+content-hash = "741ff34902e743c3125fdfc3f7e46b84a874911aa178cafb1be16920c783a125"
