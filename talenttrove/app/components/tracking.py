@@ -3,21 +3,26 @@ import streamlit as st
 import streamlit_antd_components as sac
 
 
-def timeline(step:int,key):
+def timeline(step:int,date,key,rejected=True):
+    steps = ['Applied','OA','Interview','Offer']
+    items=[]
+    for i,j in zip(steps,range(0,4)):
+        if step == j and not rejected:
+            items.append(sac.StepsItem(title=i,subtitle=date,icon='check-circle-fill'))
+        else:
+            items.append(sac.StepsItem(title=i,disabled=True,icon='dot'))
+    if rejected:
+        items.append(sac.StepsItem(title='Rejected',icon='x-circle-fill'))
+        step=4
     step_bar = sac.steps(
-        items=[
-            sac.StepsItem(title='Applied',disabled=True),
-            sac.StepsItem(title='OA',subtitle='20/11/2023'),
-            sac.StepsItem(title='Interview', disabled=True),
-            sac.StepsItem(title='Offer', disabled=True),
-        ], index=step, size='default',dot=True,key=key
+        items=items, index=step, size='default',key=key
     )
     return timeline
 
-def get_track_component(company,title,location,image,step:int):
+def get_track_component(company,title,location,image,step:int,date:str,rejected:bool):
     col1,col2 = st.columns([1,2])
     with col2:
-        timeline(step,key = F'{company}{title}-{step}')
+        timeline(step,date,key = F'{company}{title}-{step}',rejected=rejected)
     with col1:
         # Title
     

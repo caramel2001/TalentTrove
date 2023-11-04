@@ -1,11 +1,11 @@
-date,title,location,company,logo
-2023-10-17T01:53:21.451834,Algorithmic Trader,"New York, NY, USA",Vatic Investments,https://storage.googleapis.com/simplify-imgs/companies/d3613d51-4f2f-43c1-8952-1f91bf5a8bf8/logo.png
-2023-10-17T01:49:54.184199,Software Engineer: Early Career,"Chicago, IL, USA",Aquatic Capital Management,https://storage.googleapis.com/simplify-imgs/companies/05867f8f-dbee-43db-b863-df360bd29fca/logo.png
-2023-10-10T12:28:01.683509,Junior Quant Researcher,"Montreal, QC, Canada",Squarepoint Capital,https://storage.googleapis.com/simplify-imgs/companies/ffd27f6b-94cd-4561-a9c0-3ea61c6ef54e/logo.png
-2023-10-03T16:41:33.778202,Data Scientist,Singapore,QBE,https://storage.googleapis.com/simplify-imgs/company/default/logo.png
-2023-10-03T16:37:49.651740,Campus Quantitative Researcher,"Chicago, IL, USA",Jump Trading,https://storage.googleapis.com/simplify-imgs/companies/bcb8dae0-9979-4f1c-b972-adfd898802fb/logo.png
-2023-10-03T16:36:44.884440,Business Data Scientist – Early Career,"San Francisco, CA, USA",Figma,https://storage.googleapis.com/simplify-imgs/companies/626fbafa-3868-42ac-8473-95841e851a35/logo.png
-2023-10-03T16:30:24.229551,Data Scientist,"Oakland, CA, USA",The Voleon Group,https://storage.googleapis.com/simplify-imgs/companies/24399a3e-2695-4226-9dcf-1d55b789ffd4/logo.png
-2023-10-03T16:27:57.485252,Algorithm Developer – 2024 Grads,"New York, NY, USA",Hudson River Trading,https://storage.googleapis.com/simplify-imgs/companies/54548b68-d50e-4ab8-a807-cf53b3ba19bb/logo.png
-2023-10-03T16:14:30.020459,Quant Trader,Singapore,Optiver,https://storage.googleapis.com/simplify-imgs/companies/cf4035a4-c4b1-43cf-b152-ce228bbe2ec8/logo.png
-2023-09-29T15:52:26.937914,Quantitative Research Analyst,"Las Vegas, NV, USA",Tower Research Capital,https://storage.googleapis.com/simplify-imgs/companies/7c71a682-ee02-4e03-a31b-e58f0e382c89/logo.png
+date,title,location,company,logo,stage,rejected
+2023-10-17,Algorithmic Trader,"New York, NY, USA",Vatic Investments,https://storage.googleapis.com/simplify-imgs/companies/d3613d51-4f2f-43c1-8952-1f91bf5a8bf8/logo.png,3,1
+2023-10-17,Software Engineer: Early Career,"Chicago, IL, USA",Aquatic Capital Management,https://storage.googleapis.com/simplify-imgs/companies/05867f8f-dbee-43db-b863-df360bd29fca/logo.png,2,0
+2023-10-10,Junior Quant Researcher,"Montreal, QC, Canada",Squarepoint Capital,https://storage.googleapis.com/simplify-imgs/companies/ffd27f6b-94cd-4561-a9c0-3ea61c6ef54e/logo.png,1,1
+2023-10-03,Data Scientist,Singapore,QBE,https://storage.googleapis.com/simplify-imgs/company/default/logo.png,0,1
+2023-10-03,Campus Quantitative Researcher,"Chicago, IL, USA",Jump Trading,https://storage.googleapis.com/simplify-imgs/companies/bcb8dae0-9979-4f1c-b972-adfd898802fb/logo.png,3,0
+2023-10-03,Business Data Scientist – Early Career,"San Francisco, CA, USA",Figma,https://storage.googleapis.com/simplify-imgs/companies/626fbafa-3868-42ac-8473-95841e851a35/logo.png,1,1
+2023-10-03,Data Scientist,"Oakland, CA, USA",The Voleon Group,https://storage.googleapis.com/simplify-imgs/companies/24399a3e-2695-4226-9dcf-1d55b789ffd4/logo.png,1,0
+2023-10-03,Algorithm Developer – 2024 Grads,"New York, NY, USA",Hudson River Trading,https://storage.googleapis.com/simplify-imgs/companies/54548b68-d50e-4ab8-a807-cf53b3ba19bb/logo.png,3,0
+2023-10-03,Quant Trader,Singapore,Optiver,https://storage.googleapis.com/simplify-imgs/companies/cf4035a4-c4b1-43cf-b152-ce228bbe2ec8/logo.png,3,1
+2023-09-29,Quantitative Research Analyst,"Las Vegas, NV, USA",Tower Research Capital,https://storage.googleapis.com/simplify-imgs/companies/7c71a682-ee02-4e03-a31b-e58f0e382c89/logo.png,1,0
