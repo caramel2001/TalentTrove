@@ -17,7 +17,7 @@ css_body_container = '''
         }
     </style>
     '''
-dummy_data = pd.read_csv("/Users/pratham/Desktop/trademaster/TalentTrove/talenttrove/data/dummy_data/applications.csv")
+dummy_data = pd.read_csv("/Users/akshit/Documents/cZ4125/TalentTrove/talenttrove/data/dummy_data/applications.csv")
 st.markdown(css_body_container,unsafe_allow_html=True)
 for i,row in dummy_data.iterrows():
     get_track_component(row['company'],row['title'],row['location'],row['logo'],row['stage'],row['date'],row['rejected'])
