@@ -1,4 +1,122 @@
-﻿sentence,label
+﻿text,label
+"Subject: Weekend Plans
+Hi Emily,
+What are your plans for the weekend? I was thinking of catching up over coffee. Let me know if you're available!
+Best,
+Alex",0
+"Subject: Invitation to a Party
+Hey Sarah,
+You're invited to my birthday party this Saturday at [Venue]. It's going to be a great time with friends, food, and music. Hope to see you there!
+Cheers,
+Chris",0
+"Subject: Weekly Newsletter
+Dear Jonathan,
+Thank you for subscribing to our weekly newsletter. In this edition, we cover the latest trends in technology, upcoming events, and more. Stay tuned for valuable insights!
+Regards,
+TechWorld",0
+"Subject: Your Order Confirmation
+Hi Olivia,
+Thank you for shopping with us! Your order #12345 has been confirmed and will be shipped soon. You can track your order using the link below.
+Happy shopping!
+TrendyGoods",0
+"Subject: Monthly Statement Available
+Dear Michael,
+Your monthly bank statement for March is now available. You can view and download it by logging into your online banking account.
+Regards,
+SecureBank",0
+"Subject: Don't Forget: Webinar Tomorrow
+Hi Vanessa,
+Just a reminder that the webinar on Machine Learning is scheduled for tomorrow at 2 PM. Make sure to join us for an informative session!
+Best,
+TechSeminar Team",0
+"Subject: Your Travel Details
+Hi Jason,
+Here are the details for your upcoming trip:
+Flight: AC1234
+Hotel: Hilton Downtown
+Excursions: City Tour, Museum Visit
+Have a great journey!
+GlobeTrotter Agency",0
+"Subject: Upcoming Workshop on Python Programming
+Hello Alice,
+We are excited to announce an upcoming workshop on Python Programming. Join us for an interactive session with industry experts and enhance your knowledge in this field.
+Regards,
+CodingInstitute",0
+"Subject: Monthly Health Tips
+Dear Elena,
+In this month's newsletter, we share valuable health tips, delicious recipes, and fitness routines to help you maintain a healthy lifestyle. Stay well!
+Best,
+HealthVibes",0
+"Subject: Invitation to Charity Gala
+Hi Mark,
+You're invited to our annual Charity Gala to support Education for All. Join us for an evening of fundraising, entertainment, and making a positive impact in our community.
+Warm regards,
+HopeFoundation",0
+"Subject: Important Tax Filing Information
+Dear Olivia,
+This is a reminder to file your taxes before the upcoming deadline. Visit our website for resources and assistance with the filing process.
+Sincerely,
+TaxHelp Department",0
+"Subject: Next Book Club Meeting
+Hello Rachel,
+Our next book club meeting is scheduled for April 5th. We'll be discussing ""The Silent Waters."" Looking forward to another engaging discussion!
+Cheers,
+BookWorms Club",0
+"Subject: Software Update Available
+Hi Alex,
+A new software update is now available for TechPro. This update includes bug fixes and exciting new features. Click the link to update your software.
+Regards,
+TechInnovate",0
+"Subject: Annual Community Fair
+Dear Christopher,
+Join us for our annual community fair on May 1st. There will be food, games, and activities for all ages. Bring your friends and family for a day of fun!
+Best,
+CommunityUnity Organization",0
+"Subject: Share Your Feedback!
+Hi Nicole,
+We hope you're enjoying your recent purchase. Share your thoughts by leaving a review on our website. Your feedback helps us improve and assist other customers in making informed decisions.
+Thank you,
+TrendyGoods",0
+"Subject: Subscription Renewal Notice
+Dear William,
+Your subscription to TechMonthly is expiring soon. Renew now to continue enjoying uninterrupted access to premium content and features.
+Regards,
+TechMonthly",0
+"Subject: Unusual Login Activity Detected
+Hi John,
+We've detected unusual login activity on your account. If this wasn't you, please secure your account by changing your password immediately.
+Best,
+SecurityAlert Team",0
+"Subject: Season's Greetings!
+Dear Emily,
+Wishing you and your loved ones a joyful holiday season filled with warmth and happiness. May the coming year bring you success and prosperity.
+Cheers,
+Johnson Family",0
+"Subject: Your Opinion Matters
+Hi Rachel,
+We value your opinion! Take a few minutes to complete our survey and share your thoughts. Your feedback helps us enhance our products/services.
+Thank you,
+OpinionInsight",0
+"Subject: Your Ticket Confirmation for MusicFest
+Hi Ryan,
+Thank you for purchasing tickets to MusicFest. Your confirmation details and ticket QR code are attached. We look forward to seeing you there!
+Regards,
+MusicFest Organizer",0
+"Subject: Annual Home Inspection Reminder
+Dear Amanda,
+It's time for your annual home inspection. Schedule an appointment to ensure your home is in top condition and address any maintenance needs.
+Best,
+HomeCare Services",0
+"Subject: Latest Blog Post - ""The Future of AI""
+Hello Daniel,
+We've just published a new blog post on ""The Future of AI."" Check it out for insightful content and stay updated on the latest trends in Artificial Intelligence.
+Happy reading!
+AIInsights Blog",0
+"Subject: Join Us for a Pet Adoption Event
+Hi Lily,
+We're hosting a pet adoption event this weekend. Come meet adorable pets looking for loving homes. Bring joy to your life by adopting a furry friend!
+Regards,
+HappyTails Shelter",0
 "Dear [Candidate's Name],
 
 I hope this email finds you well. I wanted to personally reach out to you and inform you that you have been shortlisted for the next round of our hiring process for the [Job Title] position at [Company Name]. We were impressed with your application and believe that your qualifications and experience align well with what we are looking for.
@@ -24,7 +142,7 @@ Best regards,
 [Your Title]
 [Company Name]
 [Contact Information]
-",0
+",1
 "Dear Emily,
 
 I hope this email finds you well. I wanted to personally reach out to you and inform you that you have been shortlisted for the next round of our hiring process for the Software Developer position at XYZ Tech Solutions. We were impressed with your application and believe that your qualifications and experience align well with what we are looking for.
@@ -50,7 +168,7 @@ Sarah Johnson
 Talent Acquisition Specialist
 XYZ Tech Solutions
 Email: sarah.johnson@xyztech.com
-Phone: (555) 123-4567",0
+Phone: (555) 123-4567",1
 " hope this email finds you well. I wanted to personally reach out to you and inform you that you have been shortlisted for the next round of our hiring process for the Software Developer position at XYZ Tech Solutions. We were impressed with your application and believe that your qualifications and experience align well with what we are looking for.
 
 We would like to invite you for an interview to further discuss your suitability for the role and to get to know you better. The interview will be held on Wednesday, November 2nd, 2023, at our main office located at 123 Main Street, Suite 456, Tech City. It is expected to last approximately 45 minutes. You will have the opportunity to meet with our Senior Software Developer, Jane Smith, and our HR Manager, John Doe, and learn more about our company and the role.
@@ -270,7 +388,7 @@ Phone: (555) 123-4567
 
 
 
-",0
+",1
 "Dear Emily,
 
 I hope this email finds you well. I wanted to personally reach out to you and inform you that you have been shortlisted for the next round of our hiring process for the Software Developer position at XYZ Tech Solutions. We were impressed with your application and believe that your qualifications and experience align well with what we are looking for.
@@ -288,7 +406,7 @@ To confirm your availability for this online interview, please respond to this e
 
 In preparation for the online interview, we recommend that you test your internet connection and Zoom setup to ensure a smooth interview experience. Be ready to discuss your qualifications and experiences that make you a strong fit for this role. Feel free to reach out if you have any questions or need further information about the online interview process.
 
-We are excited to learn more about you and your potential contribution to our team. Thank you for your interest in XYZ Tech Solutions, and we look forward to meeting you online.",0
+We are excited to learn more about you and your potential contribution to our team. Thank you for your interest in XYZ Tech Solutions, and we look forward to meeting you online.",1
 "hope this message finds you in good health. I'm reaching out to convey our gratitude for your application for the [Job Title] position with [Company Name]. After a thorough evaluation, we are pleased to inform you that you have advanced to the next stage of our selection process – the interview.
 
 Your application stood out due to your impressive qualifications, professional background, and the genuine enthusiasm you exhibited for this role. Your skills and experience align closely with our expectations for this position.
@@ -343,7 +461,7 @@ To prepare effectively for the interview, we recommend reviewing the job descrip
 Once again, congratulations on making it to this stage. We are excited to meet you and delve deeper into your potential contributions. If any scheduling conflicts arise or if you need to reschedule, please inform us as soon as possible.
 
 Thank you for your interest in [Company Name], and we will be in touch shortly.
-",0
+",1
 "Hope you're doing well! 😊 I've got some great news to share. Your application for the [Job Title] position at [Company Name] really caught our eye, and we're excited to invite you for an interview. 🎉
 
 We were seriously impressed by your skills and experience, and your enthusiasm for the role is infectious. You've made the shortlist!
@@ -359,7 +477,7 @@ To prep, take a peek at the job description, dig into what we're all about at [C
 
 Congrats on making it this far, and remember, we're all about making this a two-way street. If you need to reschedule or have any questions, give us a shout ASAP.
 
-Thanks for your interest in [Company Name], and we'll be in touch real soon.",0
+Thanks for your interest in [Company Name], and we'll be in touch real soon.",1
 "Dear [Candidate's Name],
 
 I trust this message finds you in good health. It is with great pleasure that I inform you of your successful advancement to the pre-interview HR screening stage for the [Job Title] position at [Company Name]. Your application has been meticulously reviewed, and we are highly impressed with your qualifications and the enthusiasm you have demonstrated for this role.
@@ -391,7 +509,7 @@ Warm regards,
 [Your Name]
 [Your Title]
 [Company Name]
-[Your Contact Information]",0
+[Your Contact Information]",1
 "Dear [Candidate's Name],
 
 Congratulations on making it to the next stage for the [Job Title] position at [Company Name]! We were highly impressed with your application.
@@ -423,7 +541,7 @@ Best regards,
 [Your Name]
 [Your Title]
 [Company Name]
-[Your Contact Information]",0
+[Your Contact Information]",1
 "Hi Akshit,
  
 It was nice speaking to you earlier J
@@ -434,7 +552,7 @@ The goal of this interview is for us to get to know you better, about your passi
  
 Date	10 Aug 2022, Wednesday
 Time	3.00pm
-Dress code	Smart casual",0
+Dress code	Smart casual",1
 "I hope this message finds you well. I wanted to personally thank you for your interest in the [Job Title] position at [Company Name] and for the time and effort you put into the interview process. We were truly impressed with your qualifications and experience, and we appreciate your enthusiasm for the role.
 
 After careful consideration, we have decided to move forward with another candidate whose skills and experience closely align with our current needs for this role. It was a challenging decision to make, as we were highly impressed with your qualifications and what you could bring to our team.
@@ -534,7 +652,7 @@ Any Other Documents or Information Requested in the Interview Confirmation: Revi
 Please email these documents to [Your Email Address] by [Deadline for Submission] so that we can complete the preparations for your interview. If you have any questions or encounter any difficulties in providing the requested documents, please don't hesitate to reach out to us.
 
 We look forward to meeting you and discussing your qualifications further during the interview. If you have any questions or need any further information about the interview process, please feel free to ask.
-",2
+",1
 "hope this message finds you well. Thank you for expressing interest in the [Job Title] position at [Company Name]. We appreciate your application and are looking forward to learning more about your qualifications.
 
 Before we officially start the interview process, we kindly request that you provide the following documents:
@@ -547,7 +665,7 @@ Your timely submission of these documents will facilitate our initial assessment
 If you have any questions or need further clarification, please feel free to contact us.
 
 We appreciate your cooperation and are excited to begin the interview process and learn more about your qualifications.
-",2
+",1
 "I hope this message finds you in good spirits. We appreciate your interest in the [Job Title] role at [Company Name] and are looking forward to moving ahead with the evaluation process.
 
 Before we officially commence the interview stages, we kindly request that you share the following documents with us:
@@ -559,7 +677,7 @@ Timely submission of these documents will greatly aid us in our initial assessme
 
 Should you have any inquiries or require additional clarifications, please do not hesitate to get in touch with us.
 
-Your cooperation is greatly valued, and we are excited to embark on the interview process to gain deeper insights into your qualifications.",2
+Your cooperation is greatly valued, and we are excited to embark on the interview process to gain deeper insights into your qualifications.",1
 "I hope this message finds you in good spirits. We appreciate your interest in the [Job Title] position at [Company Name]. We're excited to begin the next steps in our selection process and look forward to getting to know you better.
 
 Before we officially kick off the interview process, we kindly request that you provide the following documents:
@@ -571,7 +689,7 @@ Your timely submission of these documents will help us make a more informed asse
 
 If you have any questions or require further information, please feel free to reach out to us. We're here to assist you.
 
-We greatly appreciate your cooperation in this matter and are eagerly anticipating the interview process to gain a deeper insight into your qualifications.",2
+We greatly appreciate your cooperation in this matter and are eagerly anticipating the interview process to gain a deeper insight into your qualifications.",1
 "I hope this message finds you in good health and high spirits. Your interest in the [Job Title] role at [Company Name] is truly appreciated, and we're excited to explore your potential further.
 
 Before we officially embark on the interview process, we kindly request that you share the following documents:
@@ -583,7 +701,7 @@ Your swift submission of these documents will aid us in our preliminary evaluati
 
 Should you have any inquiries or require additional details, please don't hesitate to get in touch.
 
-We highly value your cooperation and eagerly anticipate commencing the interview process to gain deeper insights into your qualifications.",2
+We highly value your cooperation and eagerly anticipate commencing the interview process to gain deeper insights into your qualifications.",1
 "I hope this message finds you well. We appreciate your interest in the [Job Title] position at [Company Name], and we are eager to delve deeper into your qualifications.
 
 Before we formally initiate the interview process, we kindly request the submission of the following documents, including any pertinent visa details if applicable:
@@ -596,7 +714,7 @@ Timely submission of these documents, along with visa details where applicable, 
 
 If you have any questions, require clarification, or need to discuss your visa status further, please do not hesitate to reach out.
 
-We value your cooperation and eagerly anticipate commencing the interview process to gain deeper insights into your qualifications and ensure a smooth transition into our organization.",2
+We value your cooperation and eagerly anticipate commencing the interview process to gain deeper insights into your qualifications and ensure a smooth transition into our organization.",1
 "trust you are doing well. We want to express our appreciation for your dedicated involvement in the interview process for the [Job Title] position at [Company Name]. Your journey with us has been impressive, and we're excited to take the next steps.
 
 As we prepare for the final stages of the interview process, we kindly request that you submit the following documents, including any pertinent visa details if applicable:
@@ -611,14 +729,14 @@ You can respond to this email with the required attachments or use any other con
 
 If you have any questions or require further information, particularly regarding your visa status, please don't hesitate to reach out. We are here to support you.
 
-Thank you for your continued commitment to the interview process, and we look forward to the upcoming final interview stage.",2
+Thank you for your continued commitment to the interview process, and we look forward to the upcoming final interview stage.",1
 " trust you are doing well. Your continued interest and participation in the interview process for the [Job Title] position at [Company Name] are greatly appreciated. We are excited to have you as a part of our ongoing evaluation.
 
-As we progress in the interview stages, we kindly request the submission of the following documents, including visa details if relevant:",2
+As we progress in the interview stages, we kindly request the submission of the following documents, including visa details if relevant:",1
 "Please submit the following documents, so we are able to go ahead with this. 
 1. NRIC
 2. Resume
-3. Passport",2
+3. Passport",1
 "I hope this message finds you well. We are delighted to offer you the position of [Job Title] at [Company Name]. Your application and interview process impressed us, and we believe that your skills and experience make you an excellent fit for our team.
 
 Below, you'll find the details of the job offer:
@@ -646,7 +764,7 @@ If you have any questions or need additional information, please don't hesitate 
 
 We are excited about the possibility of having you join our team at [Company Name] and look forward to working together. Your contributions will be valued and appreciated as we strive for continued success.
 
-We sincerely hope you accept this offer and become a part of our [Company Name] family. Thank you for considering our offer, and we eagerly anticipate your response.",3
+We sincerely hope you accept this offer and become a part of our [Company Name] family. Thank you for considering our offer, and we eagerly anticipate your response.",1
 "Greetings! We are thrilled to extend an invitation to embark on a new professional journey as part of our dynamic team at [Company Name]. After a comprehensive assessment of your application and a stimulating interview process, we are convinced that your exceptional skills and background align perfectly with our organization.
 
 You have been selected for the role of [Job Title] in the [Department Name] at our [Office Location]. We envisage your journey with us commencing on [Start Date], and you will be reporting to [Supervisor's Name].
@@ -676,10 +794,10 @@ For any queries or the need for additional information, please do not hesitate t
 
 We eagerly await your response and are eager to welcome you into the [Company Name] family. Your contributions will be instrumental in our quest for sustained success.
 
-Accept our heartfelt invitation and anticipate an enriching and rewarding experience as part of our journey at [Company Name]. We sincerely appreciate your consideration of this offer.",3
+Accept our heartfelt invitation and anticipate an enriching and rewarding experience as part of our journey at [Company Name]. We sincerely appreciate your consideration of this offer.",1
 "Warm greetings to you! We are elated to extend an invitation for you to embark on an exciting journey with us at [Company Name]. Your application and interview performance left a lasting impression, and it is with immense pleasure that we offer you the role of [Job Title].
 
-The role you are about to step into is a pivotal one within our organization. As a member of the [Department Name] team, your contributions will leave an indelible mark on our collective success. Here are the specific details of this unique opportunity:",3
+The role you are about to step into is a pivotal one within our organization. As a member of the [Department Name] team, your contributions will leave an indelible mark on our collective success. Here are the specific details of this unique opportunity:",1
 "I'm thrilled to offer you the [Job Title] position at [Company Name]. Your exceptional application and interview have impressed us, making you an ideal addition to our team.
 
 Details:
@@ -690,7 +808,7 @@ Start Date: [Start Date]
 Salary: [Annual Salary]
 Please review this offer. If you accept, kindly sign and return by [Acceptance Deadline]. Contact [HR Contact Name] at [HR Contact Email] for any questions.
 
-We're eager to have you on board and look forward to your positive response.",3
+We're eager to have you on board and look forward to your positive response.",1
 "Great news! We're thrilled to offer you the [Job Title] gig at [Company Name]. Your application and interviews really rocked, and we're convinced you're the perfect fit for our team.
 
 The Lowdown:
@@ -701,7 +819,7 @@ Start Date: [Start Date]
 Pay: [Annual Salary]
 Take your time to mull it over. If you're up for the adventure, give us the nod by signing and returning this by [Acceptance Deadline]. Have questions? Reach out to our friendly [HR Contact Name] at [HR Contact Email].
 
-We can't wait to welcome you aboard! Exciting times ahead.",3
+We can't wait to welcome you aboard! Exciting times ahead.",1
 "We're stoked to offer you the [Job Title] position here at [Company Name]. Your application and interviews have impressed us greatly, and we believe you're the perfect fit for our crew.
 
 The Rundown:
@@ -713,7 +831,7 @@ Salary: [Annual Salary]
 Feel free to take your time to consider this offer. If you're ready to dive in, just give us the green light by signing and returning it before [Acceptance Deadline]. Got any questions? Reach out to our friendly [HR Contact Name] at [HR Contact Email].
 
 We're all set to welcome you on board! Exciting times ahead, mate.
-",3
+",1
 "We are thrilled to extend to you the esteemed position of [Job Title] at [Company Name]. Your application and interviews have left a lasting impression, and we are convinced that you are the ideal candidate to join our team.
 
 Offer Highlights:
@@ -725,7 +843,7 @@ Compensation: [Annual Salary]
 We encourage you to take your time to consider this offer. If you decide to embark on this journey with us, kindly signify your acceptance by signing and returning the offer letter before [Acceptance Deadline]. For any queries or clarifications, please do not hesitate to reach out to [HR Contact Name] at [HR Contact Email].
 
 We eagerly await your positive response, and we look forward to welcoming you into the [Company Name] family. Your contributions will play a vital role in our ongoing success.
-",3
+",1
 "Name]. Your application and interviews have made a compelling case, and we believe you possess the qualifications and character that align seamlessly with our organizational values.
 
 Offer Particulars:
@@ -736,4 +854,36 @@ Commencement Date: [Start Date]
 Annual Compensation: [Annual Salary]
 We kindly request that you allocate sufficient time to deliberate upon this offer. Should you choose to accept this proposition, we request your acknowledgment by signing and returning the enclosed offer letter prior to the stipulated deadline of [Acceptance Deadline]. For any questions or clarifications, please do not hesitate to contact [HR Contact Name] at [HR Contact Email].
 
-We eagerly anticipate your positive response. Your presence will undoubtedly bolster our team and contribute to our shared success.",3
+We eagerly anticipate your positive response. Your presence will undoubtedly bolster our team and contribute to our shared success.",1
+"Subject: New Job Opportunity: [Job Title] at [Company]
+Hi [User],
+We found a job that matches your skills and experience. [Company] is currently hiring for the position of [Job Title]. Review the job description and apply now to take the next step in your career.
+Best regards,
+LinkedIn Jobs",0
+"Subject: Exciting Opportunity: [Job Title] at [Company]
+Hi [User],
+JobsDB has identified a new job opening that aligns with your profile. [Company] is looking for a qualified candidate for the position of [Job Title]. View the job details and apply today to be considered.
+Regards,
+JobsDB Team",0
+"Subject: Job Recommendation: [Job Title] at [Company]
+Hi [User],
+Based on your profile and career interests, LinkedIn recommends the job opening at [Company] for the role of [Job Title]. Explore the details and apply if you're interested in this exciting opportunity.
+Regards,
+LinkedIn Jobs",0
+"Subject: New Job Listing: [Job Title] at [Company]
+Hi [User],
+JobsDB has identified a job opportunity that matches your skills. [Company] is hiring for the position of [Job Title]. Check out the details and apply now to be considered for this role.
+Best regards,
+JobsDB Team",0
+"Subject: New Job Alert: [Job Title] at [Company]
+Hi [User],
+An exciting job opportunity has been posted on JobsDB. [Company] is hiring for the position of [Job Title], and your skills match the requirements. Apply now to be considered for this role.
+Regards,
+JobsDB Team",0
+"Subject: Exciting Job Opportunity at [Company]
+Hi Emily,
+We hope this message finds you well. We have a new job opening at [Company] for the position of [Job Title]. Your profile has caught our attention, and we believe you could be a great fit for our team.
+If you are interested, please review the attached job description and reply to this email with your updated resume.
+Best regards,
+[Employer Name]
+[Company]",0
