@@ -28,6 +28,7 @@ streamlit-antd-components = "^0.2.3"
 pymilvus = "^2.3.2"
 sentence-transformers = "^2.2.2"
 chromadb = "^0.4.15"
+torch = "^2.1.1"
 
 
 [build-system]
