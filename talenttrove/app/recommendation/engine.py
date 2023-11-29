@@ -2,20 +2,22 @@ import os
 from docx import Document
 from openai import OpenAI
 import chromadb
+from chromadb.utils import embedding_functions
+default_ef = embedding_functions.DefaultEmbeddingFunction()
 
 # Job recommendation engine and UI to display them
 class Recommendation:
-    def __init__(self,resume,openai_key=None,jobtitle=None,model = 'all-MiniLM-L6-v2'):
+    def __init__(self,resume,openai_key=None,jobtitle=None): #model = 'all-MiniLM-L6-v2' by default
         self.resume = resume
         self.jobtitle = jobtitle
         self.openai_key = openai_key
         self.client = OpenAI(api_key=self.openai_key)
         self.file_path = os.path.join(os.getcwd(),"talenttrove/data/jd_vectordb")
         self.chroma_client = chromadb.PersistentClient(path=self.file_path)
-        self.collection = self.chroma_client.get_or_create_collection(name="mycareersfuture_jd")
+        self.collection = self.chroma_client.get_or_create_collection(name="mycareersfuture_jd", embedding_function=default_ef)
     
     def read_word_document(self):
-        doc = Document(self.resume) ### RESUME HAS TO BE A PATH
+        doc = Document(self.resume) ### RESUME HAS TO BE A PATH OR I/O object
         text = ''
         for paragraph in doc.paragraphs:
             text += paragraph.text + '\n'
