@@ -1,6 +1,7 @@
 import streamlit as st
 from components.sidebar import sidebar
 from components.tracking import timeline
+import os
 
 
 EMBEDDING = "openi"
@@ -30,9 +31,10 @@ if not gmail_api_key:
         " https://support.google.com/mail/answer/185833."
     )
 
-st.markdown("""
-            <img src="app/static/homepage.png" style="width: 100%;" alt="Descriptive text for the image">
-            """,unsafe_allow_html=True)
+# st.markdown("""
+#             <img src="app/static/homepage.png" style="width: 100%;" alt="Descriptive text for the image">
+#             """,unsafe_allow_html=True)
+st.image(os.path.join(os.getcwd(),"talenttrove/app/static/homepage.png"))
 # load image in center
 # st.markdown("---",unsafe_allow_html=True)
 # uploaded_file = st.file_uploader(
