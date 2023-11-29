@@ -30,9 +30,7 @@ if not gmail_api_key:
         " https://support.google.com/mail/answer/185833."
     )
 
-st.markdown("""
-            <img src="app/static/homepage.png" style="width: 100%;" alt="Descriptive text for the image">
-            """,unsafe_allow_html=True)
+st.image("static/homepage.png")
 # load image in center
 # st.markdown("---",unsafe_allow_html=True)
 # uploaded_file = st.file_uploader(
