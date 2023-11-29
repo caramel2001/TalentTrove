@@ -23,6 +23,8 @@ if not uploaded_file:
     )
 else:
     rec = Recommendation(uploaded_file,openai_api_key)
-    gen_jd = rec.get_generated_jd()
+    print('Created Recommendation Object')
+    with st.spinner('Generating Job Description...'):
+        gen_jd = rec.get_generated_jd()
     similar_jds = rec.search_jd(gen_jd)
     st.write(similar_jds["documents"][0][0])    ###TEST
