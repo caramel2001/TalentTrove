@@ -1,4 +1,7 @@
-from sentence_transformers import SentenceTransformer
+import os
+from docx import Document
+from openai import OpenAI
+import chromadb
 
 # Job recommendation engine and UI to display them
 class Recommendation:
@@ -6,21 +9,44 @@ class Recommendation:
         self.resume = resume
         self.jobtitle = jobtitle
         self.openai_key = openai_key
-        self.model = SentenceTransformer(model)
+        self.client = OpenAI(api_key=self.openai_key)
+        self.file_path = os.path.join(os.getcwd(),"talenttrove/data/jd_vectordb")
+        self.chroma_client = chromadb.PersistentClient(path=self.file_path)
+        self.collection = self.chroma_client.get_or_create_collection(name="mycareersfuture_jd")
+    
+    def read_word_document(self):
+        doc = Document(self.resume) ### RESUME HAS TO BE A PATH
+        text = ''
+        for paragraph in doc.paragraphs:
+            text += paragraph.text + '\n'
+        return text
 
     def get_generated_jd(self):
-        # Get the generated JD from OpenAI API
-        pass
+        text = self.read_word_document()
+        try:
+            # Create a chat completion using the question and context
+            response = self.client.chat.completions.create(
+                model="gpt-3.5-turbo",
+                messages=[
+                    {"role": "system", "content": "Based on the given resume above, create a suitable job posting for this resume. The job posting must include the job description, job responsibilities, and requirements such as qualifications and skills. Do not include the company name and location in this job posting."},
+                    {"role": "user", "content": f"Resume: {text}\n\n---\n\nJob Description:"}
+                ],
+                temperature=0,
+                # max_tokens=max_tokens,
+                top_p=1,
+                frequency_penalty=0,
+                presence_penalty=0,
+                # stop=stop_sequence,
+            )
+            return response.choices[0].message.content.strip()
+        except Exception as e:
+            print(e)
+            return ""
 
-    def search_jd(self,jd):
-        embed = self.encode(jd)
-        # Query most similar JDs from the vector database
-        pass
-
-    def encode(self,text:str):
-        # Encode the JD before Searching
-        return self.model.encode(text)
-        
-
-    def get_recommendations(self):
-        pass
+    def search_jd(self,jd,k=10):
+        results = self.collection.query(
+            query_texts=[jd],
+            n_results=k,
+            include=['documents', 'distances', 'metadatas']
+        )
+        return results

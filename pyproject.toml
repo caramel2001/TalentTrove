@@ -30,6 +30,7 @@ sentence-transformers = "^2.2.2"
 chromadb = "^0.4.15"
 torch = "^2.1.1"
 streamlit-extras = "^0.3.5"
+python-docx = "^1.1.0"
 
 
 [build-system]
