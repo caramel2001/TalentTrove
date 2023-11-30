@@ -30,6 +30,8 @@ sentence-transformers = "^2.2.2"
 chromadb = "^0.4.15"
 torch = "^2.1.1"
 streamlit-extras = "^0.3.5"
+setfit = "^0.7.0"
+hugchat = "^0.3.8"
 
 
 [build-system]
