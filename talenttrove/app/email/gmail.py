@@ -3,6 +3,8 @@ import email
 from datetime import datetime, timedelta
 from email.header import decode_header
 from tqdm import tqdm
+import json 
+
 class Gmail:
     def __init__(self, username, password):
         self.username = username
@@ -32,16 +34,29 @@ class Gmail:
     
     @staticmethod
     def get_body(msg):
+
         if msg.is_multipart():
             for part in msg.walk():
-                content_type = part.get_content_type()
                 content_disposition = str(part.get("Content-Disposition"))
-                if "attachment" not in content_disposition:
-                    # print('x')
-                    body = part.get_payload(decode=True)
+                if part.get_content_type() == "text/plain" and  "attachment" not in content_disposition:
+                    body = part.get_payload(decode=True).decode(part.get_content_charset() or 'utf-8')
                     if body is None:
                         continue
-                    body = body.decode()
+
+
+        # if msg.is_multipart():
+        #     for part in msg.walk():
+        #         content_type = part.get_content_type()
+        #         content_disposition = str(part.get("Content-Disposition"))
+        #         if "attachment" not in content_disposition:
+        #             # print('x')
+        #             body = part.get_payload(decode=True)
+        #             if body is None:
+        #                 continue
+        #             try:
+        #                 body = body.decode()
+        #             except:
+        #                 continue
         else:
             body = msg.get_payload(decode=True).decode()
         return body
@@ -58,7 +73,8 @@ class Gmail:
             subject, _ = decode_header(msg["Subject"])[0]
             sender, _ = decode_header(msg["From"])[0]
             data.append(
-                {
+                {   
+                    'id': email_id.decode('utf-8'),
                     'subject':subject,
                     'sender':sender,
                     'date':msg['Date'],
