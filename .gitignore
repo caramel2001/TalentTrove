@@ -9,3 +9,4 @@ react
 talenttrove.db
 poetry.lock
 jd_vectordb
+model/
