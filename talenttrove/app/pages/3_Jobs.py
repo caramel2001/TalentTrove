@@ -16,7 +16,7 @@ if not gmail_api_key:
         "Enter your Gmail API key in the sidebar. You can get a key at"
         " https://platform.openai.com/account/api-keys."
     )
-data = pd.read_json("../data/jobs/mycareersfuture_with_descriptions_cleaned.json")
+data = pd.read_json(os.path.join(os.getcwd(), "talenttrove/data/jobs/mycareersfuture_with_descriptions_cleaned.json"))
 data['updatedAt'] = pd.to_datetime(data['updatedAt']).dt.date.astype(str)
 st.dataframe(data.head())
 # Function to display a single job listing
@@ -25,7 +25,7 @@ def display_job(title, company, company_logo,apply_url,job_type=["Full-Time"],po
         col1, col2 = st.columns([1, 7])
         with col1:
             if company_logo is None:
-                company_logo ='static/logo.png'
+                company_logo =os.path.join(os.getcwd(),'talenttrove/app/static/logo.png')
             st.image(company_logo, width=50)  # Placeholder for company logo
         with col2:
             st.write(f"**{title}**")

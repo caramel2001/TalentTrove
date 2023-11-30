@@ -3,7 +3,6 @@ from docx import Document
 from openai import OpenAI
 import chromadb
 from chromadb.utils import embedding_functions
-default_ef = embedding_functions.DefaultEmbeddingFunction()
 
 # Job recommendation engine and UI to display them
 class Recommendation:
@@ -14,7 +13,7 @@ class Recommendation:
         self.client = OpenAI(api_key=self.openai_key)
         self.file_path = os.path.join(os.getcwd(),"talenttrove/data/jd_vectordb")
         self.chroma_client = chromadb.PersistentClient(path=self.file_path)
-        self.collection = self.chroma_client.get_or_create_collection(name="mycareersfuture_jd", embedding_function=default_ef)
+        self.collection = self.chroma_client.get_or_create_collection(name="mycareersfuture_jd", embedding_function=embedding_functions.DefaultEmbeddingFunction())
     
     def read_word_document(self):
         doc = Document(self.resume) ### RESUME HAS TO BE A PATH OR I/O object

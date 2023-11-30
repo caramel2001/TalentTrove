@@ -1,6 +1,7 @@
 import os
 import pandas as pd
 import chromadb
+from chromadb.utils import embedding_functions
 
 documents = []
 metadatas = []
@@ -20,7 +21,7 @@ for index, row in df.iterrows():
     ids.append(str(index))
 
 chroma_client = chromadb.PersistentClient(path=os.path.join(os.getcwd(),"talenttrove/data/jd_vectordb"))
-collection = chroma_client.get_or_create_collection(name="mycareersfuture_jd")
+collection = chroma_client.get_or_create_collection(name="mycareersfuture_jd", embedding_function=embedding_functions.DefaultEmbeddingFunction())
 batch_size = 500  # Adjust this value based on the maximum batch size allowed
 for i in range(0, len(documents), batch_size):
     batch_documents = documents[i:i+batch_size]
