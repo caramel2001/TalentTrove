@@ -18,6 +18,11 @@ css_body_container = """
             gap: 0;
         }
     </style>
+    '''
+dummy_data = pd.read_csv("talenttrove/data/dummy_data/applications.csv")
+st.markdown(css_body_container,unsafe_allow_html=True)
+for i,row in dummy_data.iterrows():
+    get_track_component(row['company'],row['title'],row['location'],row['logo'],row['stage'],row['date'],row['rejected'])
     """
 dummy_data = pd.read_csv(settings["Track_PATH"])
 st.markdown(css_body_container, unsafe_allow_html=True)
