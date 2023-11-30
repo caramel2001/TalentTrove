@@ -13,13 +13,13 @@ class HFJobTitleCompanyNameExtractor():
 
 
     def get_jobtitle(self,email_text:str):
-        question =  "What is the job title or role?If not available output None",
+        question =  "What is the job title or role?If not available output None. Only return the required field, do not generate other words or sentences.",
         input_text = f"question: {question} context: {email_text}"
         response = self.chatbot.chat(input_text)
         return response
     
     def get_company(self,email_text:str):
-        question =  "What is the name of the company?If not available output None",
+        question =  "What is the name of the company?If not available output None. Only return the required field, do not generate other words or sentences.",
         input_text = f"question: {question} context: {email_text}"
         response = self.chatbot.chat(input_text)
         return response
