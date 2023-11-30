@@ -11,7 +11,6 @@ scrapy = "^2.10.1"
 notebook = "^7.0.3"
 jupyter = "^1.0.0"
 ipykernel = "6.21.2"
-pandas = "^2.1.1"
 streamlit = "^1.27.2"
 streamlit-authenticator = "^0.2.3"
 python-dotenv = "^1.0.0"
@@ -32,6 +31,8 @@ torch = "^2.1.1"
 streamlit-extras = "^0.3.5"
 setfit = "^0.7.0"
 hugchat = "^0.3.8"
+python-docx = "^1.1.0"
+openai = "^1.3.6"
 
 
 [build-system]
