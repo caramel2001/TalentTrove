@@ -10,3 +10,4 @@ talenttrove.db
 poetry.lock
 jd_vectordb
 model/
+app.log
