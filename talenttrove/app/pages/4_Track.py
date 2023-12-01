@@ -1,6 +1,7 @@
 import streamlit as st
 import os
 import sys
+import requests
 
 sys.path.append(
     os.path.dirname(
@@ -17,7 +18,16 @@ from talenttrove.app.email.gmail import Gmail
 
 
 def get_logo_trustpilot(company_name):
-    pass
+    url = "https://www.trustpilot.com/api/consumersitesearch-api/businessunits/search"
+    params = {
+        "country": "US",
+        "page": 1,
+        "pageSize": 5,
+        "query": company_name,
+    }
+    response = requests.get(url, params=params, headers={"user-agent": "Mozilla/5.0"})
+    if pd.DataFrame(response.json().get("businessUnits", [])).shape[0] == 1:
+        print(1)
 
 
 def get_logo(company_name):
@@ -26,6 +36,7 @@ def get_logo(company_name):
 
 openai_api_key = st.session_state.get("OPENAI_API_KEY")
 gmail_api_key = st.session_state.get("GMAIL_API_KEY")
+gmail_username = st.session_state.get("GMAIL_USERNAME")
 
 st.set_page_config(page_title="TalentTrove", page_icon="📖", layout="wide")
 st.header("Application Tracker")
@@ -39,15 +50,13 @@ def get_last_update_date():
 
 jobs = pd.DataFrame()
 if st.button("Get Latest Track Data", type="primary"):
-    if gmail_api_key:
+    if gmail_api_key and gmail_username:
         latest_date = get_last_update_date()
         if pd.isna(latest_date):
             # get date of one year ago from now and import libraries
             latest_date = (datetime.now() - timedelta(days=1)).strftime("%d-%b-%Y")
         with st.spinner(f"Fetching emails since {latest_date}..."):
-            gmail = Gmail(
-                username="agarwalpratham2001@gmail.com", password=gmail_api_key
-            )
+            gmail = Gmail(username=gmail_username, password=gmail_api_key)
             gmail.authenticate()
             ids = gmail.get_email_by_date(from_date=latest_date)
             email_dict = gmail.parse_emails(ids)
@@ -83,10 +92,10 @@ if st.button("Get Latest Track Data", type="primary"):
             jobs["stage"] = stages
         print(jobs.head())
     else:
-        st.error("Please enter your Gmail API Key")
+        st.error("Please enter your Gmail API Key or Gmail username")
         st.stop()
 track_data = pd.concat([jobs, track_data], axis=0)
-track_data.sort_values(by="date", inplace=True, ascending=False)
+track_data.sort_values(by="date", inplace=True, ascending=True)
 css_body_container = """
     <style>
         [data-testid="stSidebar"] + section [data-testid="stVerticalBlock"]

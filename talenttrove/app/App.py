@@ -18,6 +18,7 @@ sidebar()
 
 openai_api_key = st.session_state.get("OPENAI_API_KEY")
 gmail_api_key = st.session_state.get("GMAIL_API_KEY")
+gmail_username = st.session_state.get("GMAIL_USERNAME")
 
 
 if not openai_api_key:
@@ -30,6 +31,8 @@ if not gmail_api_key:
         "Enter your Gmail App Password in the sidebar. You can generate it at"
         " https://support.google.com/mail/answer/185833."
     )
+if not gmail_username:
+    st.warning("Enter your Gmail Email Address.")
 
 
 st.image(os.path.join(os.getcwd(), "talenttrove/app/static/homepage.png"))
