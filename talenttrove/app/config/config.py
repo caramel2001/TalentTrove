@@ -9,4 +9,5 @@ ROOT_DIR = Path(__file__).parent.parent
 settings = {
     "DB_PATH": str(ROOT_DIR.joinpath("db/talenttrove.db")),
     "Track_PATH": str(ROOT_DIR.joinpath("../data/dummy_data/applications.csv")),
+    "Track_Date_PATH": str(ROOT_DIR.joinpath("../data/track.csv")),
 }

@@ -54,22 +54,14 @@ class Gmail:
                     )
                     if body is None:
                         continue
-
-        # if msg.is_multipart():
-        #     for part in msg.walk():
-        #         content_type = part.get_content_type()
-        #         content_disposition = str(part.get("Content-Disposition"))
-        #         if "attachment" not in content_disposition:
-        #             # print('x')
-        #             body = part.get_payload(decode=True)
-        #             if body is None:
-        #                 continue
-        #             try:
-        #                 body = body.decode()
-        #             except:
-        #                 continue
         else:
-            body = msg.get_payload(decode=True).decode()
+            try:
+                body = msg.get_payload(decode=True).decode(
+                    msg.get_content_charset() or "utf-8"
+                )
+            except UnicodeDecodeError:
+                print("UnicodeDecodeError")
+                return body
         return body
 
     def parse_emails(self, ids: list):
