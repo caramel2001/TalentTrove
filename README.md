@@ -27,41 +27,41 @@ Run example.ipynb to test out different clients and scrapers
 
 ## Code Structure
 
-+---assets
-+---talenttrove
-ª   +---app
-ª   ª   +---.streamlit
-ª   ª   +---components
-ª   ª   ª   +---__pycache__
-ª   ª   +---config
-ª   ª   ª   +---__pycache__
-ª   ª   +---db
-ª   ª   +---email
-ª   ª   ª   +---__pycache__
-ª   ª   +---models
-ª   ª   ª   +---model
-ª   ª   ª   ª   +---email_classifer
-ª   ª   ª   ª   ª   +---1_Pooling
-ª   ª   ª   ª   +---stage_classifer
-ª   ª   ª   ª       +---1_Pooling
-ª   ª   ª   +---train_data
-ª   ª   ª   +---__pycache__
-ª   ª   +---pages
-ª   ª   +---recommendation
-ª   ª   ª   +---__pycache__
-ª   ª   +---static
-ª   ª   +---__pycache__
-ª   +---data
-ª   ª   +---applied_data
-ª   ª   +---companies
-ª   ª   +---dummy_data
-ª   ª   +---jd_vectordb
-ª   ª   ª   +---72d24396-2729-47ac-98d6-3efaf6c23580
-ª   ª   +---jobs
-ª   +---scrapers
-ª   +---VectorDB
-ª   +---__pycache__
-+---tests
+├── assets
+├── talenttrove
+│   ├── app
+│   │   ├── .streamlit
+│   │   ├── components
+│   │   │   └── __pycache__
+│   │   ├── config
+│   │   │   └── __pycache__
+│   │   ├── db
+│   │   ├── email
+│   │   │   └── __pycache__
+│   │   ├── models
+│   │   │   └── model
+│   │   │       └── email_classifer
+│   │   │           └── 1_Pooling
+│   │   │       └── stage_classifer
+│   │   │           └── 1_Pooling
+│   │   ├── train_data
+│   │   │   └── __pycache__
+│   │   ├── pages
+│   │   ├── recommendation
+│   │   │   └── __pycache__
+│   │   ├── static
+│   │   └── __pycache__
+│   ├── data
+│   │   ├── applied_data
+│   │   ├── companies
+│   │   ├── dummy_data
+│   │   ├── jd_vectordb
+│   │   │   └── 72d24396-2729-47ac-98d6-3efaf6c23580
+│   │   └── jobs
+│   ├── scrapers
+│   ├── VectorDB
+│   └── __pycache__
+└── tests
 
 ## Company
 
