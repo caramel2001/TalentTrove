@@ -22,16 +22,25 @@ def get_logo_trustpilot(company_name):
     params = {
         "country": "US",
         "page": 1,
-        "pageSize": 5,
+        "pageSize": 1,
         "query": company_name,
     }
-    response = requests.get(url, params=params, headers={"user-agent": "Mozilla/5.0"})
-    if pd.DataFrame(response.json().get("businessUnits", [])).shape[0] == 1:
-        print(1)
-
-
-def get_logo(company_name):
-    pass
+    try:
+        response = requests.get(
+            url, params=params, headers={"user-agent": "Mozilla/5.0"}
+        )
+        print(f"Trustpilot API Response: {response.status_code}")
+        if pd.DataFrame(response.json().get("businessUnits", [])).shape[0] == 1:
+            temp = pd.DataFrame(response.json().get("businessUnits", []))
+            if pd.isna(temp["logoUrl"].iloc[0]):
+                print("No Logo Found")
+                return "https://storage.googleapis.com/simplify-imgs/company/default/logo.png"
+            else:
+                return f'https://consumersiteimages.trustpilot.net/business-units/{temp["businessUnitId"].iloc[0]}-198x149-1x.jpg'
+    except Exception as e:
+        print(e)
+        pass
+    return "https://storage.googleapis.com/simplify-imgs/company/default/logo.png"
 
 
 openai_api_key = st.session_state.get("OPENAI_API_KEY")
@@ -69,29 +78,38 @@ if st.button("Get Latest Track Data", type="primary"):
             dates = [pd.to_datetime(i["date"]).strftime("%d-%m-%Y") for i in email_dict]
         with st.spinner("Identifying Company and Job title"):
             jobs = pd.DataFrame(preds, columns=["text", "job"])
+            jobs.to_csv("job_classification_test.csv", index=False)
             jobs["date"] = dates
             jobs = jobs[jobs["job"] != "0"]
             jobs.reset_index(inplace=True, drop=True)
             jobs["title"] = None
             jobs["company"] = None
-            jobs["rejected"] = False
+            jobs["rejected"] = 0
             jobs[
                 "logo"
-            ] = "https://storage.googleapis.com/simplify-imgs/company/default/logo.png"  # deafulat placeholder logo
-            jobs["location"] = None
+            ] = "https://storage.googleapis.com/simplify-imgs/company/default/logo.png"  # deafult placeholder logo
+            jobs["location"] = "Singapore"
             for index, i in enumerate(jobs["text"]):
                 jobs.loc[index, "company"] = classifier.extractor.get_company(i)
                 jobs.loc[index, "title"] = classifier.extractor.get_jobtitle(i)
+                jobs.loc[index, "logo"] = get_logo_trustpilot(
+                    jobs.loc[index, "company"]
+                )
         if jobs.shape[0] == 0:
             st.warning("No new Job Update emails found")
         else:
             with st.spinner("Identifying Job Stage"):
                 stage_classifier = JobStageClassifier()
                 stages = []
-                for i in jobs["text"]:
+                for index, i in enumerate(jobs["text"]):
                     out = stage_classifier.classify(i)
-                    stages.append(out)
+                    if int(out) == 4:  # rejected
+                        jobs.loc[index, "rejected"] = 1
+                    stages.append(int(out))
                 jobs["stage"] = stages
+                jobs[["text", "job", "stage", "company", "title"]].to_csv(
+                    "job_stages_test.csv", index=False
+                )
         print(jobs.head())
     else:
         st.error("Please enter your Gmail API Key or Gmail username")
@@ -118,3 +136,6 @@ for i, row in track_data.iterrows():
         row["date"],
         row["rejected"],
     )
+
+# storing the updated data
+track_data.to_csv(settings["Track_PATH"], index=False)
