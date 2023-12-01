@@ -27,6 +27,7 @@ Run example.ipynb to test out different clients and scrapers
 
 ## Code Structure
 
+C:.
 ├── assets
 ├── talenttrove
 │   ├── app
@@ -62,6 +63,7 @@ Run example.ipynb to test out different clients and scrapers
 │   ├── VectorDB
 │   └── __pycache__
 └── tests
+
 
 ## Company
 
