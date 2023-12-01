@@ -82,14 +82,16 @@ if st.button("Get Latest Track Data", type="primary"):
             for index, i in enumerate(jobs["text"]):
                 jobs.loc[index, "company"] = classifier.extractor.get_company(i)
                 jobs.loc[index, "title"] = classifier.extractor.get_jobtitle(i)
-        print(jobs.head())
-        with st.spinner("Identifying Job Stage"):
-            stage_classifier = JobStageClassifier()
-            stages = []
-            for i in jobs["text"]:
-                out = stage_classifier.classify(i)
-                stages.append(out)
-            jobs["stage"] = stages
+        if jobs.shape[0] == 0:
+            st.warning("No new Job Update emails found")
+        else:
+            with st.spinner("Identifying Job Stage"):
+                stage_classifier = JobStageClassifier()
+                stages = []
+                for i in jobs["text"]:
+                    out = stage_classifier.classify(i)
+                    stages.append(out)
+                jobs["stage"] = stages
         print(jobs.head())
     else:
         st.error("Please enter your Gmail API Key or Gmail username")
