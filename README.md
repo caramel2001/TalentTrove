@@ -28,7 +28,6 @@ Run example.ipynb to test out different clients and scrapers
 ## Code Structure
 
 ```
-C:.
 ├── assets
 ├── talenttrove
 │   ├── app
