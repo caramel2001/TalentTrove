@@ -27,12 +27,18 @@ def sidebar():
             type="password",
             placeholder="Paste your Gmail App Password here (sk-...)",
             help="You can get your API key from https://support.google.com/mail/answer/185833.",  # noqa: E501
-            value=None
-            or st.session_state.get("GMAIL_API_KEY", ""),
+            value=None or st.session_state.get("GMAIL_API_KEY", ""),
+        )
+
+        email_input = st.text_input(
+            "Gmail Email Address",
+            placeholder="Paste your Gmail Address Here (...@gmail.com)",
+            value=None or st.session_state.get("GMAIL_USERNAME", ""),
         )
 
         st.session_state["OPENAI_API_KEY"] = api_key_input
         st.session_state["GMAIL_API_KEY"] = email_key_input
+        st.session_state["GMAIL_USERNAME"] = email_input
 
         st.markdown("---")
         st.markdown("# About")
@@ -40,5 +46,3 @@ def sidebar():
             "TalentTrove allows you track your job applications and manage your job search. "
             "The update is done by accessing your Email Inbox  "
         )
-        
-

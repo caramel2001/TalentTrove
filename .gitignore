@@ -7,3 +7,6 @@ secrets.yaml
 singapore_companies.csv
 react
 talenttrove.db
+poetry.lock
+jd_vectordb
+model/

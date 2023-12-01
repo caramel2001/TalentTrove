@@ -48,6 +48,7 @@ class Recommendation:
             print(e)
             return ""
 
+
     def search_jd(self,jd,k=10):
         results = self.collection.query(
             query_texts=[jd],
