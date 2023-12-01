@@ -24,7 +24,6 @@ pyjwt = "2.6.0"
 iniconfig = "1.1.1"
 itsdangerous = "2.1.2"
 streamlit-antd-components = "^0.2.3"
-pymilvus = "^2.3.2"
 sentence-transformers = "^2.2.2"
 chromadb = "^0.4.15"
 langchain = "^0.0.338"
@@ -36,6 +35,7 @@ hugchat = "^0.3.8"
 python-docx = "^1.1.0"
 openai = "^1.3.6"
 gdown = "^4.7.1"
+protobuf = "3.20.3"
 
 
 [build-system]
