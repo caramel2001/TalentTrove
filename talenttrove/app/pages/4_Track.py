@@ -2,6 +2,7 @@ import streamlit as st
 import os
 from components.tracking import timeline, get_track_component
 import pandas as pd
+import logging
 from config.config import settings
 
 openai_api_key = st.session_state.get("OPENAI_API_KEY")
@@ -10,7 +11,7 @@ gmail_api_key = st.session_state.get("GMAIL_API_KEY")
 st.set_page_config(page_title="TalentTrove", page_icon="📖", layout="wide")
 st.subheader("Application Tracker")
 
-
+logging.info('Job Tracking Page Rendered')
 css_body_container = """
     <style>
         [data-testid="stSidebar"] + section [data-testid="stVerticalBlock"]

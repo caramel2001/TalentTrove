@@ -2,6 +2,7 @@ import os
 from docx import Document
 from openai import OpenAI
 import chromadb
+import logging
 from chromadb.utils import embedding_functions
 
 # Job recommendation engine and UI to display them
@@ -24,6 +25,7 @@ class Recommendation:
 
     def get_generated_jd(self):
         text = self.read_word_document()
+        logging.info("Document Read")
         try:
             # Create a chat completion using the question and context
             response = self.client.chat.completions.create(
@@ -39,8 +41,10 @@ class Recommendation:
                 presence_penalty=0,
                 # stop=stop_sequence,
             )
+            logging.info("CV Generated")
             return response.choices[0].message.content.strip()
         except Exception as e:
+            logging.warning(e)
             print(e)
             return ""
 

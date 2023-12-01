@@ -1,10 +1,13 @@
 import streamlit as st
 import os
+import logging
 import pandas as pd
 import numpy as np
 openai_api_key = st.session_state.get("OPENAI_API_KEY")
 gmail_api_key = st.session_state.get("GMAIL_API_KEY")
 
+
+logging.info('Dashboard Rendered')
 
 if not openai_api_key:
     st.warning(
