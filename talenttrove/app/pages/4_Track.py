@@ -117,6 +117,8 @@ if st.button("Get Latest Track Data", type="primary"):
         st.stop()
 track_data = pd.concat([jobs, track_data], axis=0)
 track_data.sort_values(by="date", inplace=True, ascending=False)
+# storing the updated data
+track_data.to_csv(settings["Track_PATH"], index=False)
 track_data = track_data.groupby(by=["company", "title"]).first().reset_index()
 track_data.sort_values(by="date", inplace=True, ascending=False)
 
@@ -140,6 +142,3 @@ for i, row in track_data.iterrows():
         row["date"],
         row["rejected"],
     )
-
-# storing the updated data
-track_data.to_csv(settings["Track_PATH"], index=False)
