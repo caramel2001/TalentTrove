@@ -1,9 +1,11 @@
 import streamlit as st
 import os
+import logging
 from recommendation.engine import Recommendation
 openai_api_key = st.session_state.get("OPENAI_API_KEY")
 gmail_api_key = st.session_state.get("GMAIL_API_KEY")
 
+logging.info('Matches Rendered')
 
 if not openai_api_key:
     st.warning(
@@ -27,4 +29,4 @@ else:
     with st.spinner('Generating Job Description...'):
         gen_jd = rec.get_generated_jd()
     similar_jds = rec.search_jd(gen_jd)
-    st.write(similar_jds["documents"][0][0])    ###TEST
+    st.write(similar_jds)

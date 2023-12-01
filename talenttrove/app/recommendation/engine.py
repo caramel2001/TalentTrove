@@ -2,9 +2,8 @@ import os
 from docx import Document
 from openai import OpenAI
 import chromadb
+import logging
 from chromadb.utils import embedding_functions
-import streamlit as st
-default_ef = embedding_functions.DefaultEmbeddingFunction()
 
 # Job recommendation engine and UI to display them
 class Recommendation:
@@ -14,11 +13,9 @@ class Recommendation:
         self.openai_key = openai_key
         self.client = OpenAI(api_key=self.openai_key)
         self.file_path = os.path.join(os.getcwd(),"talenttrove/data/jd_vectordb")
-        print(self.file_path)
-        self.chroma_client = chromadb.PersistentClient(path=r"talenttrove/data/jd_vectordb")
-        self.collection = self.chroma_client.get_or_create_collection(name="mycareersfuture_jd", embedding_function=default_ef)
-        
-
+        self.chroma_client = chromadb.PersistentClient(path=self.file_path)
+        self.collection = self.chroma_client.get_or_create_collection(name="mycareersfuture_jd", embedding_function=embedding_functions.DefaultEmbeddingFunction())
+    
     def read_word_document(self):
         doc = Document(self.resume) ### RESUME HAS TO BE A PATH OR I/O object
         text = ''
@@ -28,6 +25,7 @@ class Recommendation:
 
     def get_generated_jd(self):
         text = self.read_word_document()
+        logging.info("Document Read")
         try:
             # Create a chat completion using the question and context
             response = self.client.chat.completions.create(
@@ -43,9 +41,10 @@ class Recommendation:
                 presence_penalty=0,
                 # stop=stop_sequence,
             )
-            print(text)
+            logging.info("CV Generated")
             return response.choices[0].message.content.strip()
         except Exception as e:
+            logging.warning(e)
             print(e)
             return ""
 

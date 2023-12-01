@@ -12,6 +12,7 @@ from models.job_classifier import JobClassifier
 from models.job_stage import JobStageClassifier
 from components.tracking import timeline, get_track_component
 import pandas as pd
+import logging
 from config.config import settings
 from datetime import datetime, timedelta
 from talenttrove.app.email.gmail import Gmail
@@ -52,6 +53,7 @@ st.header("Application Tracker")
 
 track_data = pd.read_csv(settings["Track_PATH"])
 
+logging.info('Job Tracking Page Rendered')
 
 def get_last_update_date():
     return pd.read_csv(settings["Track_Date_PATH"])["Date"].max()
