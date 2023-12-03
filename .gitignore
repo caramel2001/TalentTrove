@@ -11,3 +11,5 @@ poetry.lock
 jd_vectordb
 model/
 app.log
+app.log
+poetry.lock
