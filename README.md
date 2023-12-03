@@ -13,13 +13,57 @@ Additional Functionalities refer to the documentation
 
 https://python-poetry.org/docs/cli/
 
+Before running the Streamlit App
+
+`poetry run python run talenttrove/VectorDB/chroma.py`
+
 To Lauch the Streamlit App
 
 `poetry run streamlit run talenttrove/app/App.py`
 
 ## Example
 
-Run exmaple.ipynb to test out different clients and scrapers
+Run example.ipynb to test out different clients and scrapers
+
+## Code Structure
+
+```
+├── assets
+├── talenttrove
+│   ├── app
+│   │   ├── .streamlit
+│   │   ├── components
+│   │   │   └── __pycache__
+│   │   ├── config
+│   │   │   └── __pycache__
+│   │   ├── db
+│   │   ├── email
+│   │   │   └── __pycache__
+│   │   ├── models
+│   │   │   └── model
+│   │   │       └── email_classifer
+│   │   │           └── 1_Pooling
+│   │   │       └── stage_classifer
+│   │   │           └── 1_Pooling
+│   │   ├── train_data
+│   │   │   └── __pycache__
+│   │   ├── pages
+│   │   ├── recommendation
+│   │   │   └── __pycache__
+│   │   ├── static
+│   │   └── __pycache__
+│   ├── data
+│   │   ├── applied_data
+│   │   ├── companies
+│   │   ├── dummy_data
+│   │   ├── jd_vectordb
+│   │   │   └── 72d24396-2729-47ac-98d6-3efaf6c23580
+│   │   └── jobs
+│   ├── scrapers
+│   ├── VectorDB
+│   └── __pycache__
+└── tests
+```
 
 ## Company
 
