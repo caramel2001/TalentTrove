@@ -1,46 +1,19 @@
 import streamlit as st
 import os
 import sys
-import requests
 
 sys.path.append(
     os.path.dirname(
         os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     )
 )
-from models.job_classifier import JobClassifier
-from models.job_stage import JobStageClassifier
-from components.tracking import timeline, get_track_component
+from talenttrove.app.models.complete_classifier import Classifier
+from talenttrove.app.components.tracking import get_track_component
 import pandas as pd
 import logging
-from config.config import settings
+from talenttrove.app.config.config import settings
 from datetime import datetime, timedelta
 from talenttrove.app.email.gmail import Gmail
-
-
-def get_logo_trustpilot(company_name):
-    url = "https://www.trustpilot.com/api/consumersitesearch-api/businessunits/search"
-    params = {
-        "country": "US",
-        "page": 1,
-        "pageSize": 1,
-        "query": company_name,
-    }
-    try:
-        response = requests.get(
-            url, params=params, headers={"user-agent": "Mozilla/5.0"}
-        )
-        if pd.DataFrame(response.json().get("businessUnits", [])).shape[0] == 1:
-            temp = pd.DataFrame(response.json().get("businessUnits", []))
-            if pd.isna(temp["logoUrl"].iloc[0]):
-                print("No Logo Found")
-                return "https://storage.googleapis.com/simplify-imgs/company/default/logo.png"
-            else:
-                return f'https://consumersiteimages.trustpilot.net/business-units/{temp["businessUnitId"].iloc[0]}-198x149-1x.jpg'
-    except Exception as e:
-        pass
-    return "https://storage.googleapis.com/simplify-imgs/company/default/logo.png"
-
 
 openai_api_key = st.session_state.get("OPENAI_API_KEY")
 gmail_api_key = st.session_state.get("GMAIL_API_KEY")
@@ -60,12 +33,14 @@ def get_last_update_date():
 
 jobs = pd.DataFrame()
 latest_date = get_last_update_date()
+
 if pd.isna(latest_date):
     # get date of one month ago from now
-    latest_date = (datetime.now() - timedelta(days=30)).strftime("%d-%b-%Y")
+    latest_date = (datetime.now() - timedelta(days=2)).strftime("%d-%b-%Y")
     st.write("No previous update date found")
 else:
     st.write(f"Last Updated on {latest_date}")
+
 if st.button("Get Latest Track Data", type="primary"):
     if latest_date == datetime.now().strftime("%d-%b-%Y"):  # already updated today
         st.warning("No new Job Update emails found")
@@ -76,49 +51,10 @@ if st.button("Get Latest Track Data", type="primary"):
                 gmail.authenticate()
                 ids = gmail.get_email_by_date(from_date=latest_date)
                 email_dict = gmail.parse_emails(ids)
-            with st.spinner("Identifying Job Emails"):
-                classifier = JobClassifier()
-                preds = []
-                for i in email_dict:
-                    email, out = classifier.classify(i, preprocess=True)
-                    preds.append((email, out))
-                dates = [
-                    pd.to_datetime(i["date"]).strftime("%Y-%m-%d") for i in email_dict
-                ]
-            with st.spinner("Identifying Company and Job title"):
-                jobs = pd.DataFrame(preds, columns=["text", "job"])
-                # jobs.to_csv("job_classification_test.csv", index=False) # for testing
-                jobs["date"] = dates
-                jobs = jobs[jobs["job"] != "0"]
-                jobs.reset_index(inplace=True, drop=True)
-                jobs["title"] = None
-                jobs["company"] = None
-                jobs["rejected"] = 0
-                jobs[
-                    "logo"
-                ] = "https://storage.googleapis.com/simplify-imgs/company/default/logo.png"  # deafult placeholder logo
-                jobs["location"] = "Singapore"
-                for index, i in enumerate(jobs["text"]):
-                    jobs.loc[index, "company"] = classifier.extractor.get_company(i)
-                    jobs.loc[index, "title"] = classifier.extractor.get_jobtitle(i)
-                    jobs.loc[index, "logo"] = get_logo_trustpilot(
-                        jobs.loc[index, "company"]
-                    )
-            if jobs.shape[0] == 0:
-                st.warning("No new Job Update emails found")
-            else:
-                with st.spinner("Identifying Job Stage"):
-                    stage_classifier = JobStageClassifier()
-                    stages = []
-                    for index, i in enumerate(jobs["text"]):
-                        out = stage_classifier.classify(i)
-                        if int(out) == 4:  # rejected
-                            jobs.loc[index, "rejected"] = 1
-                        stages.append(int(out))
-                    jobs["stage"] = stages
-                    # jobs[["text", "job", "stage", "company", "title"]].to_csv(
-                    #     "job_stages_test.csv", index=False
-                    # ) # for testing
+            # Classifier Pipeline
+            with st.spinner("Intializing the models..."):
+                classifier = Classifier()
+            jobs = classifier.streamlit_classify(email_dict)
             print(jobs.head())
             # update last update date
             pd.DataFrame({"Date": [datetime.now().strftime("%d-%b-%Y")]}).to_csv(
@@ -126,12 +62,18 @@ if st.button("Get Latest Track Data", type="primary"):
             )
         else:
             st.error("Please enter your Gmail API Key or Gmail username")
+
+# updating the track data
 track_data = pd.concat([jobs, track_data], axis=0)
 track_data.sort_values(by="date", inplace=True, ascending=False)
 # storing the updated data
 track_data.to_csv(settings["Track_PATH"], index=False)
 
-grouped_track_data = track_data.groupby(by=["company", "title"]).first().reset_index()
+# group updates within same application
+# Assumption : if a update has same company and title, it is the same application
+grouped_track_data = (
+    track_data.groupby(by=["company", "title"]).first().reset_index()
+)  # TODO: Make it more robust
 grouped_track_data.sort_values(by="date", inplace=True, ascending=False)
 
 css_body_container = """
@@ -143,6 +85,7 @@ css_body_container = """
     </style>
     """
 # print(track_data.head())
+# rendering the tracking components
 st.markdown(css_body_container, unsafe_allow_html=True)
 for i, row in grouped_track_data.iterrows():
     grouped_track_data, track_data = get_track_component(
