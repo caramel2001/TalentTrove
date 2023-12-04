@@ -29,7 +29,6 @@ uploaded_file = st.file_uploader(
 )
 
 df = None
-gen_jd = None
 if st.button(label="Not Happy with your matches😭? Regenerate Matches"):
     if uploaded_file:
         rec = Recommendation(uploaded_file, openai_api_key)

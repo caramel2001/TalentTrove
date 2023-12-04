@@ -1,6 +1,7 @@
 import streamlit as st
 
 import streamlit_antd_components as sac
+from config.config import settings
 
 
 def timeline(step: int, date, key, rejected=True):
@@ -21,8 +22,20 @@ def timeline(step: int, date, key, rejected=True):
 
 
 def get_track_component(
-    company, title, location, image, step: int, date: str, rejected: bool
+    grouped_track_data,
+    index,
+    track_data,
 ):
+    row = grouped_track_data.loc[index]
+    company, title, location, image, step, date, rejected = (
+        row["company"],
+        row["title"],
+        row["location"],
+        row["logo"],
+        row["stage"],
+        row["date"],
+        row["rejected"],
+    )
     col1, col2 = st.columns([1, 2])
     with col2:
         timeline(step, date, key=f"{company}{title}-{step}", rejected=rejected)
@@ -41,4 +54,12 @@ def get_track_component(
             st.markdown(f"**{title}**")
             st.write(f"{company}")
             st.caption(f"📍 {location}")
+            st.markdown("<br>", unsafe_allow_html=True)
+            if st.button("Delete", key=f"delete-{index}", type="primary"):
+                track_data.set_index(["company", "title"], inplace=True)
+                track_data.drop(index=(company, title), inplace=True)
+                track_data.reset_index(inplace=True)
+                track_data.to_csv(settings["Track_PATH"], index=False)
+                st.rerun()
     st.markdown("<br><br>", unsafe_allow_html=True)
+    return grouped_track_data, track_data
