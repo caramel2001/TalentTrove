@@ -59,12 +59,15 @@ def get_last_update_date():
 
 
 jobs = pd.DataFrame()
+latest_date = get_last_update_date()
+if pd.isna(latest_date):
+    # get date of one month ago from now
+    latest_date = (datetime.now() - timedelta(days=30)).strftime("%d-%b-%Y")
+    st.write("No previous update date found")
+else:
+    st.write(f"Last Updated on {latest_date}")
 if st.button("Get Latest Track Data", type="primary"):
     if gmail_api_key and gmail_username:
-        latest_date = get_last_update_date()
-        if pd.isna(latest_date):
-            # get date of one year ago from now and import libraries
-            latest_date = (datetime.now() - timedelta(days=1)).strftime("%d-%b-%Y")
         with st.spinner(f"Fetching emails since {latest_date}..."):
             gmail = Gmail(username=gmail_username, password=gmail_api_key)
             gmail.authenticate()
@@ -112,13 +115,17 @@ if st.button("Get Latest Track Data", type="primary"):
                     "job_stages_test.csv", index=False
                 )
         print(jobs.head())
+        # update last update date
+        pd.DataFrame({"Date": [datetime.now().strftime("%d-%b-%Y")]}).to_csv(
+            settings["Track_Date_PATH"], index=False
+        )
     else:
         st.error("Please enter your Gmail API Key or Gmail username")
-        st.stop()
 track_data = pd.concat([jobs, track_data], axis=0)
 track_data.sort_values(by="date", inplace=True, ascending=False)
 # storing the updated data
 track_data.to_csv(settings["Track_PATH"], index=False)
+
 track_data = track_data.groupby(by=["company", "title"]).first().reset_index()
 track_data.sort_values(by="date", inplace=True, ascending=False)
 
