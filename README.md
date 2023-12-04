@@ -33,12 +33,9 @@ Run example.ipynb to test out different clients and scrapers
 │   ├── app
 │   │   ├── .streamlit
 │   │   ├── components
-│   │   │   └── __pycache__
 │   │   ├── config
-│   │   │   └── __pycache__
 │   │   ├── db
 │   │   ├── email
-│   │   │   └── __pycache__
 │   │   ├── models
 │   │   │   └── model
 │   │   │       └── email_classifer
@@ -46,12 +43,9 @@ Run example.ipynb to test out different clients and scrapers
 │   │   │       └── stage_classifer
 │   │   │           └── 1_Pooling
 │   │   ├── train_data
-│   │   │   └── __pycache__
 │   │   ├── pages
 │   │   ├── recommendation
-│   │   │   └── __pycache__
 │   │   ├── static
-│   │   └── __pycache__
 │   ├── data
 │   │   ├── applied_data
 │   │   ├── companies
@@ -61,7 +55,6 @@ Run example.ipynb to test out different clients and scrapers
 │   │   └── jobs
 │   ├── scrapers
 │   ├── VectorDB
-│   └── __pycache__
 └── tests
 ```
 
