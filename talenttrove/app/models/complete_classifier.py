@@ -7,12 +7,28 @@ import requests
 
 
 class Classifier:
+    """
+    A class that performs classification tasks on job-related data.
+    """
+
     def __init__(self):
+        """
+        Initializes the Classifier object.
+        """
         self.job_classifier = JobClassifier()
         self.job_stage_classifier = JobStageClassifier()
         self.extractor = JobTitleCompanyNameExtractor()
 
     def classify_jobs(self, emails: list):
+        """
+        Classifies job-related emails.
+
+        Args:
+            emails (list): A list of email data.
+
+        Returns:
+            list: A list of tuples containing the classified email and the classification output.
+        """
         preds = []
         for email in emails:
             email, out = self.job_classifier.classify(email)
@@ -20,6 +36,15 @@ class Classifier:
         return preds
 
     def get_company_title_logos(self, texts: list):
+        """
+        Retrieves company names, job titles, and logos for a given list of texts.
+
+        Args:
+            texts (list): A list of texts.
+
+        Returns:
+            tuple: A tuple containing lists of titles, companies, and logos.
+        """
         title = []
         company = []
         logos = []
@@ -30,6 +55,15 @@ class Classifier:
         return title, company, logos
 
     def classify_stage(self, texts: list):
+        """
+        Classifies the stage of job-related texts.
+
+        Args:
+            texts (list): A list of texts.
+
+        Returns:
+            tuple: A tuple containing lists of stages and rejected flags.
+        """
         stages = []
         rejected = []
         for i in texts:
@@ -43,6 +77,15 @@ class Classifier:
 
     @staticmethod
     def get_logo_trustpilot(company_name):
+        """
+        Retrieves the logo URL for a given company name using the Trustpilot API.
+
+        Args:
+            company_name (str): The name of the company.
+
+        Returns:
+            str: The URL of the company's logo.
+        """
         url = (
             "https://www.trustpilot.com/api/consumersitesearch-api/businessunits/search"
         )
@@ -68,6 +111,15 @@ class Classifier:
         return "https://storage.googleapis.com/simplify-imgs/company/default/logo.png"
 
     def streamlit_classify(self, emails: list):
+        """
+        Performs classification tasks on job-related emails and returns the results in a DataFrame.
+
+        Args:
+            emails (list): A list of email data.
+
+        Returns:
+            pandas.DataFrame: A DataFrame containing the classified jobs with additional information.
+        """
         with st.spinner("Identifying Job Emails"):
             preds = self.classify_jobs(emails)
         jobs = pd.DataFrame(preds, columns=["text", "job"])
@@ -89,5 +141,14 @@ class Classifier:
         jobs.reset_index(inplace=True, drop=True)
         return jobs
 
-    def group_updates(self,updates_df:pd.DataFrame):
+    def group_updates(self, updates_df: pd.DataFrame):
+        """
+        Groups updates in a DataFrame.
+
+        Args:
+            updates_df (pandas.DataFrame): A DataFrame containing updates.
+
+        Returns:
+            None
+        """
         pass

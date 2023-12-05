@@ -28,35 +28,36 @@ def download_model():
 
 class JobStageClassifier:
     def __init__(self) -> None:
+        """
+        Initializes the JobStageClassifier class.
+        Downloads the model and loads it for inference.
+        """
         download_model()
         self.model = SetFitModel.from_pretrained(model_path)
 
     def infer(self, sentence):
+        """
+        Infers the class label for a given sentence.
+
+        Args:
+            sentence (str): The input sentence to classify.
+
+        Returns:
+            str: The predicted class label.
+        """
         predtext = [sentence]
         predicted_class = self.model(predtext)
         return str(predicted_class.numpy()[0])
 
     def classify(self, email):
+        """
+        Classifies an email into a specific job stage.
+
+        Args:
+            email (str): The email content to classify.
+
+        Returns:
+            str: The predicted job stage class label.
+        """
         predicted_class = self.infer(email)
         return predicted_class
-
-
-# if __name__ == "__main__":
-#     jc = JobClassifier()
-#     gmail = Gmail(
-#         username="agarwalpratham2001@gmail.com", password="lgjc xmxv ixyr nvxx"
-#     )
-#     gmail.authenticate()
-#     specified_date = datetime(2023, 10, 1)
-#     formatted_date = specified_date.strftime("%d-%b-%Y")
-#     ids = gmail.get_email_by_date(from_date=formatted_date)
-#     # email_dict = gmail.parse_emails(ids[:5])
-#     preds = []
-#     df = pd.read_csv("emails_jobs.csv")
-#     print(df.head())
-#     for i in df["text"]:
-#         print(i[100:200])
-#         out = jc.classify(i, preprocess=False)
-#         print(out)
-#         preds.append(out)
-#     pd.Series(preds).to_csv("preds.csv")

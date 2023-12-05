@@ -30,16 +30,40 @@ def download_model():
 
 class JobClassifier:
     def __init__(self) -> None:
+        """
+        Initializes the JobClassifier object.
+
+        Downloads the model, loads the pretrained model, and initializes the JobTitleCompanyNameExtractor.
+        """
         download_model()
         self.model = SetFitModel.from_pretrained(model_path)
         self.extractor = JobTitleCompanyNameExtractor()
 
     def infer(self, sentence):
+        """
+        Infers the class label for a given sentence.
+
+        Args:
+            sentence (str): The input sentence to classify.
+
+        Returns:
+            str: The predicted class label.
+        """
         predtext = [sentence]
         predicted_class = self.model(predtext)
         return str(predicted_class.numpy()[0])
 
     def classify(self, email, preprocess=True):
+        """
+        Classifies an email into a specific category.
+
+        Args:
+            email (str): The email to classify.
+            preprocess (bool, optional): Whether to preprocess the email before classification. Defaults to True.
+
+        Returns:
+            tuple: A tuple containing the preprocessed email and the predicted class label.
+        """
         if preprocess:
             _, email = self.preprocess_email(email)
 
@@ -47,6 +71,15 @@ class JobClassifier:
         return _, predicted_class
 
     def preprocess_email(self, email):
+        """
+        Preprocesses an email by extracting the subject and cleaning the body.
+
+        Args:
+            email (str): The email to preprocess.
+
+        Returns:
+            tuple: A tuple containing the preprocessed email with subject and without subject.
+        """
         try:
             subject = (email["subject"]).decode("utf-8")
         except:
