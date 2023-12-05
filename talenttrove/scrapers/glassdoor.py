@@ -36,8 +36,21 @@ job_param = [
 ]
 
 
+import requests
+import http.cookies
+import time
+from tqdm import tqdm
+
+
 class GlassdoorScraper:
     def __init__(self, cookie, gdtoken) -> None:
+        """
+        Initializes the GlassdoorScraper class.
+
+        Args:
+            cookie (str): The cookie value.
+            gdtoken (str): The gdtoken value.
+        """
         self.url = "https://www.glassdoor.sg/graph"
         cookie = http.cookies.SimpleCookie()
         cookie.load(cookie)
@@ -45,9 +58,13 @@ class GlassdoorScraper:
         self.cookie = cookie_dict
         self.gdtoken = gdtoken
 
-    def get_search_data(
-        self,
-    ):
+    def get_search_data(self):
+        """
+        Retrieves search data from Glassdoor.
+
+        Returns:
+            list: A list of search data.
+        """
         search_data = []
         headers = {
             "user-agent": "Mozilla/5.0",
@@ -85,6 +102,15 @@ class GlassdoorScraper:
         return search_data
 
     def get_job_data(self, search_data):
+        """
+        Retrieves job data from Glassdoor.
+
+        Args:
+            search_data (list): A list of search data.
+
+        Returns:
+            list: A list of job data.
+        """
         count = 0
         job_data = []
         datas = []
